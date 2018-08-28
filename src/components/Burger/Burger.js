@@ -33,7 +33,11 @@ const burger = (props) => {
             ingredientsArr.push(item)
         }
     }
-    const allIngredients = ingredientsArr.map((item, index) => <BurgerIngredients key={item + index} type={item} />)
+    let allIngredients = ingredientsArr.map((item, index) => <BurgerIngredients key={item + index} type={item} />)
+
+    if (allIngredients.length === 0) {
+        allIngredients = <p>Select delicious ingredients below!</p>
+    }
 
     return (
         <BurgerShape>
