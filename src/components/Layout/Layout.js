@@ -1,11 +1,16 @@
 import React, { Fragment } from 'react';
+import styled from 'styled-components';
+
+const Content = styled.main`
+    margin-top: 16px;
+`
 
 const layout = (props) => (
     <Fragment>
         <div>Toolbar, SideDrawer, Backdrop</div>
-        <main>
+        <Content>
             {props.children}
-        </main>
+        </Content>
     </Fragment>
 );
 
