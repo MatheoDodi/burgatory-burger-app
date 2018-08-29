@@ -14,6 +14,7 @@ const BuildControlButton = styled.button`
     padding: 5px;
     margin: 0 5px;
     border: 1px solid #AA6817;
+    border-radius: 2.5px;
     cursor: pointer;
     outline: none;
     &:disabled {
@@ -26,8 +27,9 @@ const BuildControlButton = styled.button`
 
 const Label = styled.div`
     padding: 10px;
-    font-weight: bold;
+    font-size: 1.2rem;
     width: 80px;
+    color: white;
 `
 
 const buildControl = (props) => {
@@ -35,7 +37,9 @@ const buildControl = (props) => {
     return (
         <BuildControlStyle>
             <Label>{props.label}</Label>
-            <BuildControlButton>Less</BuildControlButton>
+            <BuildControlButton 
+                onClick={props.removed}
+                disabled={props.disabled}>Less</BuildControlButton>
             <BuildControlButton onClick={props.added}>More</BuildControlButton>
         </BuildControlStyle>
     )

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from 'styled-components';
 import BuildControl from './BuildControl/BuildControl';
 
 const BuildControlsStyle = styled.div`
     width: 100%;
-    background-color: #CF8F2E;
+    background-color: #AD2831;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -13,24 +13,36 @@ const BuildControlsStyle = styled.div`
     padding: 10px 0;
 `
 
+const PriceParagraph = styled.p`
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: .5rem;
+    background-color: #E16036;
+`
+
 const controls = [
     { label: 'Salad', type: 'salad' },
+    { label: 'Meat', type: 'meat' },
     { label: 'Bacon', type: 'bacon' },
-    { label: 'Cheese', type: 'cheese' },
-    { label: 'Meat', type: 'meat' }
+    { label: 'Cheese', type: 'cheese' }
 ]
 
 const buildControls = (props) => { 
     return (
-        <BuildControlsStyle>
-            {controls.map(ctrl => (
-                <BuildControl 
-                    key={ctrl.label} 
-                    label={ctrl.label}
-                    type={ctrl.type} 
-                    added={() => props.ingredientAdded(ctrl.type)}/>
-            ))}
-        </BuildControlsStyle>
+        <Fragment>
+            <PriceParagraph>Current Price: ${props.price}</PriceParagraph>
+            <BuildControlsStyle>
+                {controls.map(ctrl => (
+                    <BuildControl 
+                        key={ctrl.label} 
+                        label={ctrl.label}
+                        type={ctrl.type} 
+                        added={() => props.ingredientAdded(ctrl.type)}
+                        removed={() => [props.ingredientRemoved(ctrl.type)]}
+                        disabled={props.disabled[ctrl.type]} />
+                ))}
+            </BuildControlsStyle>
+        </Fragment>
     )
 }
 
