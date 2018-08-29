@@ -16,8 +16,9 @@ const BuildControlsStyle = styled.div`
 const PriceParagraph = styled.p`
     font-size: 1.6rem;
     text-align: center;
-    margin-top: .5rem;
-    background-color: #E16036;
+    margin: 0;
+    padding: 1rem;
+    background-color: #D6947E;
 `
 
 const controls = [
@@ -30,7 +31,7 @@ const controls = [
 const buildControls = (props) => { 
     return (
         <Fragment>
-            <PriceParagraph>Current Price: ${props.price}</PriceParagraph>
+            <PriceParagraph>Current Price: <strong>${props.price.toFixed(2)}</strong></PriceParagraph>
             <BuildControlsStyle>
                 {controls.map(ctrl => (
                     <BuildControl 
