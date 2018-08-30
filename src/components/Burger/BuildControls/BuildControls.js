@@ -85,7 +85,8 @@ const buildControls = (props) => {
                         disabled={props.disabled[ctrl.type]} />
                 ))}
             <OrderButton 
-                disabled={props.disabledButton}>Order Now</OrderButton>
+                disabled={props.disabledButton}
+                onClick={props.order}>Order Now</OrderButton>
             </BuildControlsStyle>
         </Fragment>
     )

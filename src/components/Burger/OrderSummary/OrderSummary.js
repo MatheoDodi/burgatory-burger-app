@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
 const orderSummary = ({ingredients}) => {
-    const showIngredients = Object.keys(ingredients).map(keyIngr => {
-        return  <li style={{textTransform: 'Capitalize'}}>
+    const showIngredients = Object.keys(ingredients).map((keyIngr,index) => {
+        return  <li key={keyIngr} style={{textTransform: 'Capitalize'}}>
                     {keyIngr} : {ingredients[keyIngr]
                 }</li>
     })

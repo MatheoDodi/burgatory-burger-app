@@ -19,7 +19,12 @@ class BurgerBuilder extends Component {
             bacon: 0,
             cheese: 0
         },
-        totalPrice: 4
+        totalPrice: 4,
+        ordered: false
+    }
+
+    orderButtonHandler = () => {
+        this.setState( {ordered: true} );
     }
 
     addIngredientHandler = (type) => {
@@ -60,17 +65,18 @@ class BurgerBuilder extends Component {
 
         return (
             <Fragment>
-                <Modal >
+                <Modal show={this.state.ordered}>
                     <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>
                 <Burger 
                     ingredients={this.state.ingredients} />
-                <BuildControls 
+                <BuildControls
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled={disabledInfo}
                     price={this.state.totalPrice}
-                    disabledButton={disabledButtonCheck} />
+                    disabledButton={disabledButtonCheck}
+                    order={this.orderButtonHandler} />
             </Fragment>
         );
     }
