@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import Backdrop from '../../UI/Backdrop/Backdrop';
 
 const ModalDiv = styled.div`
     position: fixed;
@@ -21,12 +22,15 @@ const ModalDiv = styled.div`
 
 const modal =  (props) => {
   return (
-    <ModalDiv style={{
-      transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-      opacity: props.show ? '1' : '0'
-    }}>
-      {props.children}
-    </ModalDiv>
+    <Fragment>
+      <ModalDiv style={{
+        transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+        opacity: props.show ? '1' : '0'
+      }}>
+        {props.children}
+      </ModalDiv>
+      <Backdrop show={props.show} />
+    </Fragment>
   )
 }
 
