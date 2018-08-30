@@ -27,6 +27,10 @@ class BurgerBuilder extends Component {
         this.setState( {ordered: true} );
     }
 
+    orderCancelHandler = () => {
+        this.setState( {ordered: false} );
+    }
+
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount + 1;
@@ -65,8 +69,13 @@ class BurgerBuilder extends Component {
 
         return (
             <Fragment>
-                <Modal show={this.state.ordered}>
-                    <OrderSummary ingredients={this.state.ingredients}/>
+                <Modal 
+                    show={this.state.ordered}
+                    modalClosed={this.orderCancelHandler}>
+                    <OrderSummary 
+                    ingredients={this.state.ingredients}
+                    cancel={this.orderCancelHandler}
+                    total={this.state.totalPrice} />
                 </Modal>
                 <Burger 
                     ingredients={this.state.ingredients} />

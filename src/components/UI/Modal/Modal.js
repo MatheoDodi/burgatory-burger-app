@@ -29,7 +29,9 @@ const modal =  (props) => {
       }}>
         {props.children}
       </ModalDiv>
-      <Backdrop show={props.show} />
+      <Backdrop 
+        show={props.show}
+        clicked={props.modalClosed} />
     </Fragment>
   )
 }

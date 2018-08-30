@@ -4,13 +4,13 @@ import BuildControl from './BuildControl/BuildControl';
 
 const BuildControlsStyle = styled.div`
     width: 100%;
-    background-color: #EF233C;
+    background-color: #2B2D42;
     display: flex;
     flex-flow: column;
     align-items: center;
     box-shadow: 0 2px 1px #CCC;
-    margin: auto;
     padding: 10px 0;
+    align-self: flex-end;
 `
 
 const PriceParagraph = styled.p`
@@ -18,26 +18,28 @@ const PriceParagraph = styled.p`
     text-align: center;
     margin: 0;
     padding: 1rem;
-    background-color: #2B2D42;
+    background-color: #EF233C;
     color: white;
 `
 
 const OrderButton = styled.button`
     margin-top: 1rem;
-    background-color: #DAD735;
+    background-color: #EF233C;
     outline: none;
     cursor: pointer;
-    border: 1px solid #966909;
-    color: #966909;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    text-shadow: 1px 1px 1px black;
     font-family: inherit;
     font-size: 1.2rem;
     padding: 15px 30px;
     box-shadow: 0px 4px 3px 1px rgba(0,0,0,.2);
     transition: all 0.02s ease-in-out;
     &:hover,:active {
-        background-color: #A0DB51;
-        border: 1px solid #966909;
-        color: #966909;
+        background-color: #f23e54;
+        border: 1px solid rgba(255,255,255,0.5);
+        color: white;
+        text-shadow: 1px 1px 1px black;
         box-shadow: 0px 5px 4px 2px rgba(0,0,0,.2);
         transform: scale(1.01);
     }
