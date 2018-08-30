@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Content = styled.main`
     margin-top: 16px;
-    background-color: #EBEBEB;
+    background-color: #EDF2F4;
 `
 
 const layout = (props) => (
