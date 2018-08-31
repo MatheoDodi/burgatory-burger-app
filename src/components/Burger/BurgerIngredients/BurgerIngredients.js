@@ -49,11 +49,11 @@ const Seeds1 = styled.div`
         height: 100%;
         position: absolute;
         background-color: white;
-        left: 180%;
-        top: -50%;
         border-radius: 40%;
         transform: rotate(60deg);
         box-shadow: inset -1px -3px #c9c9c9;
+        left: 150%;
+        top: 150%;
     }
 `
 

@@ -9,7 +9,6 @@ const Content = styled.main`
     padding-top: 2rem;
     background-color: #EDF2F4;
     display: flex;
-    height: 100vh;
     flex-direction: column;
 `
 
