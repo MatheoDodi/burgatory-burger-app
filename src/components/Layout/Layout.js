@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import styled from 'styled-components';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 const Content = styled.main`
     box-sizing: border-box;
@@ -16,6 +17,7 @@ const Content = styled.main`
 const layout = (props) => (
     <Fragment>
         <Toolbar />
+        <SideDrawer />
         <Content>
             {props.children}
         </Content>
