@@ -7,6 +7,7 @@ const Content = styled.main`
     margin-top: 3rem;
     margin-bottom: 0;
     padding-top: 2rem;
+    height: 100vh;
     background-color: #EDF2F4;
     display: flex;
     flex-direction: column;
