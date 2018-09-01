@@ -36,8 +36,8 @@ const ListItem = styled.li`
 const navigationItems = (props) => {
   return (
     <NavigationList>
-        <ListItem><a>Burger Builder</a></ListItem>
-        <ListItem><a>Checkout</a></ListItem>
+        <ListItem><a style={{color: props.textColor ? 'black' : 'white'}}>Burger Builder</a></ListItem>
+        <ListItem><a style={{color: props.textColor ? 'black' : 'white'}}>Checkout</a></ListItem>
     </NavigationList>
   )
 }

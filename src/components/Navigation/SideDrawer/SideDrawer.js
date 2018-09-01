@@ -21,14 +21,14 @@ const SideDrawerDiv = styled.div`
     }
 `
 
-const sideDrawer = () => {
+const sideDrawer = (props) => {
 
 
     return (
         <SideDrawerDiv>
-            <Logo />
+            <Logo height={'5%'}/>
             <nav>
-                <NavigationItems />
+                <NavigationItems textColor={'black'}/>
             </nav>
         </SideDrawerDiv>
     );

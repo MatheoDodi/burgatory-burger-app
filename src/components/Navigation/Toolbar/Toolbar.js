@@ -24,7 +24,7 @@ const Header = styled.header`
 const toolbar = (props) => (
     <Header>
         <div>MENU</div>
-        <Logo />
+        <Logo height={"80%"}/>
         <NavigationItems />
     </Header>
 );

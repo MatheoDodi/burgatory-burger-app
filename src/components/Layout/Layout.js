@@ -17,7 +17,6 @@ const Content = styled.main`
 const layout = (props) => (
     <Fragment>
         <Toolbar />
-        <SideDrawer />
         <Content>
             {props.children}
         </Content>
