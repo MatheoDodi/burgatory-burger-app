@@ -13,11 +13,14 @@ const SideDrawerDiv = styled.div`
     left: 0;
     top: 0;
     z-index: 70;
-    background-color: white;
+    background: linear-gradient(to top, #141e30, #243b55);
     padding: 32px 16px;
     box-sizing: border-box;
     transition: transfrom 0.3s ease-out;
-    @media (min-width: 500px) {
+    box-shadow: 9px 0px 10px rgba(0,0,0,.70);
+    transition: all 0.2s ease-out;
+    transform: ${props => props.show ? 'translateX(0)' : 'translateX(-400px)'};
+    @media (min-width: 700px) {
         display: none;
     }
 `
@@ -27,13 +30,15 @@ const sideDrawer = (props) => {
 
     return (
         <Fragment>
-            <SideDrawerDiv>
+            <SideDrawerDiv show={props.showSidebar}>
                 <Logo height={'5%'}/>
                 <nav style={{marginTop: '2rem'}}>
-                    <NavigationItems textColor={'black'}/>
+                    <NavigationItems textSize={'1.25rem'}/>
                 </nav>
             </SideDrawerDiv>
-            {/* <Backdrop show={true}/> */}
+            <Backdrop 
+                clicked={props.hideSidebar}
+                show={props.showSidebar}/>
         </Fragment>
     );
 }

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import styled from 'styled-components';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
@@ -9,19 +9,39 @@ const Content = styled.main`
     margin-bottom: 0;
     padding-top: 2rem;
     height: 100vh;
-    background: linear-gradient(to bottom, #c14638 0%,#8b2825 100%);
+    background: #EDF2F4;
     display: flex;
     flex-direction: column;
 `
 
-const layout = (props) => (
-    <Fragment>
-        <Toolbar />
-        <SideDrawer />
-        <Content>
-            {props.children}
-        </Content>
-    </Fragment>
-);
 
-export default layout;
+
+class Layout extends Component {
+    state = {
+        showSidebar : false
+    }
+
+    showSidebarHandler = () => {
+        this.setState({showSidebar : true})
+    }
+
+    hideSidebarHandler = () => {
+        this.setState({showSidebar : false})
+    }
+
+    render() {
+        return (
+            <Fragment>
+                <Toolbar showSidebar={this.showSidebarHandler}/>
+                <SideDrawer 
+                    showSidebar={this.state.showSidebar}
+                    hideSidebar ={this.hideSidebarHandler}/>
+                <Content>
+                    {this.props.children}
+                </Content>
+            </Fragment>
+    );
+    }
+}
+
+export default Layout;

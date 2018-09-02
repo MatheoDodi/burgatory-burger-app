@@ -10,6 +10,9 @@ const NavigationList = styled.ul`
     height: 100%;
     @media (max-width: 500px) {
         display: flex;
+    }
+    @media (max-width: 700px) {
+        display: ${props => props.display};
         flex-direction: column;
     }
 `
@@ -27,7 +30,8 @@ const ListItem = styled.li`
         border-bottom: 4px solid transparent;
         box-sizing: border-box;
         display: block;
-        transition: all 0.2s
+        transition: all 0.2s;
+        font-size: ${props => props.textSize};
     }
     & > a:active, a:hover {
         background-color: #8f5C2C;
@@ -39,9 +43,9 @@ const ListItem = styled.li`
 
 const navigationItems = (props) => {
   return (
-    <NavigationList>
-        <ListItem><a style={{color: props.textColor ? 'black' : 'white'}}>Burger Builder</a></ListItem>
-        <ListItem><a style={{color: props.textColor ? 'black' : 'white'}}>Checkout</a></ListItem>
+    <NavigationList display={props.display}>
+        <ListItem textSize={props.textSize}><a>Burger Builder</a></ListItem>
+        <ListItem textSize={props.textSize}><a>Checkout</a></ListItem>
     </NavigationList>
   )
 }

@@ -4,7 +4,7 @@ import BuildControl from './BuildControl/BuildControl';
 
 const BuildControlsStyle = styled.div`
     width: 100%;
-    background-color: #2B2D42;
+    background: linear-gradient(to top, #141e30, #243b55);
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -27,6 +27,7 @@ const OrderButton = styled.button`
     outline: none;
     cursor: pointer;
     border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 7px;
     color: white;
     text-shadow: 1px 1px 1px black;
     font-family: inherit;

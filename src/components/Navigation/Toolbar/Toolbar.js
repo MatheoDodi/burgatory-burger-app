@@ -9,7 +9,7 @@ const Header = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #2B2D40;
+    background-color: #293B52;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
@@ -19,13 +19,35 @@ const Header = styled.header`
     color: white;
 `
 
+const MenuIconDiv = styled.div`
+    height: 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media (min-width: 700px) {
+        height: 0;
+    }
+`
+
+const MenuIconLines = styled.div`
+    width: 35px;
+    height: 3px;
+    margin: 3px 0;
+    border-radius: 5px;
+    background-color: white;
+`
+
 
 
 const toolbar = (props) => (
     <Header>
-        <div>MENU</div>
+        <MenuIconDiv onClick={props.showSidebar}>
+            <MenuIconLines />
+            <MenuIconLines />
+            <MenuIconLines />
+        </MenuIconDiv>
         <Logo height={"80%"}/>
-        <NavigationItems />
+        <NavigationItems display={'none'}/>
     </Header>
 );
 

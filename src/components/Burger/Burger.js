@@ -10,6 +10,7 @@ const BurgerShape = styled.div`
     overflow: scroll;
     text-align: center;
     font-size: 1.2rem;
+    box-sizing: border-box;
     @media (min-width: 500px) and (min-height: 400px) {
         width: 350px;
         height: 300px;
