@@ -28,10 +28,6 @@ const DangerButton = styled.button`
 `
 
 class OrderSummary extends Component {
-
-    componentWillUpdate() {
-        console.log('[OrderSummary] WillUpdate');
-    }
     
     render() {
         const showIngredients = Object.keys(this.props.ingredients).map((keyIngr,index) => {

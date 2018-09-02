@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 
@@ -20,20 +20,31 @@ const ModalDiv = styled.div`
     }
 `
 
-const modal =  (props) => {
-  return (
-    <Fragment>
-      <ModalDiv style={{
-        transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-        opacity: props.show ? '1' : '0'
-      }}>
-        {props.children}
-      </ModalDiv>
-      <Backdrop 
-        show={props.show}
-        clicked={props.modalClosed} />
-    </Fragment>
-  )
+class Modal extends Component {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.show !== this.props.show;
+  }
+
+  componentWillUpdate() {
+    console.log('[Modal] WillUpdate');
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <ModalDiv style={{
+          transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+          opacity: this.props.show ? '1' : '0'
+        }}>
+          {this.props.children}
+        </ModalDiv>
+        <Backdrop 
+          show={this.props.show}
+          clicked={this.props.modalClosed} />
+      </Fragment>
+    )
+  }
 }
 
-export default modal;
+export default Modal;
