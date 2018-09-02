@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
 const SuccessButton = styled.button`
@@ -27,25 +27,33 @@ const DangerButton = styled.button`
     font-size: 1.35rem;
 `
 
-const orderSummary = (props) => {
-    const showIngredients = Object.keys(props.ingredients).map((keyIngr,index) => {
-        return  <li key={keyIngr} style={{textTransform: 'Capitalize'}}>
-                    {keyIngr} : {props.ingredients[keyIngr]
-                }</li>
-    })
-    return (
-        <Fragment>
-            <h2>Your Order</h2>
-            <p>A delicious burger with the following ingredients:</p>
-            <ul>
-                {showIngredients}
-            </ul>
-            <h3>Total: ${props.total.toFixed(2)}</h3>
-            <p>Continue to Checkout</p>
-            <DangerButton onClick={props.cancel}>Cancel</DangerButton>
-            <SuccessButton>Continue</SuccessButton>
-        </Fragment>
-    )
+class OrderSummary extends Component {
+
+    componentWillUpdate() {
+        console.log('[OrderSummary] WillUpdate');
+    }
+    
+    render() {
+        const showIngredients = Object.keys(this.props.ingredients).map((keyIngr,index) => {
+            return  <li key={keyIngr} style={{textTransform: 'Capitalize'}}>
+                        {keyIngr} : {this.props.ingredients[keyIngr]
+                    }</li>
+        })
+
+        return (
+            <Fragment>
+                <h2>Your Order</h2>
+                <p>A delicious burger with the following ingredients:</p>
+                <ul>
+                    {showIngredients}
+                </ul>
+                <h3>Total: ${this.props.total.toFixed(2)}</h3>
+                <p>Continue to Checkout</p>
+                <DangerButton onClick={this.props.cancel}>Cancel</DangerButton>
+                <SuccessButton>Continue</SuccessButton>
+            </Fragment>
+        )
+    }
 }
 
-export default orderSummary;
+export default OrderSummary;
