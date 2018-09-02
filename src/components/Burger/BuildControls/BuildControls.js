@@ -10,7 +10,6 @@ const BuildControlsStyle = styled.div`
     align-items: center;
     box-shadow: 0 2px 1px #CCC;
     padding: 10px 0;
-    align-self: flex-end;
 `
 
 const PriceParagraph = styled.p`

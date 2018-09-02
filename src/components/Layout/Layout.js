@@ -9,7 +9,7 @@ const Content = styled.main`
     margin-bottom: 0;
     padding-top: 2rem;
     height: 100vh;
-    background-color: #EDF2F4;
+    background: linear-gradient(to bottom, #c14638 0%,#8b2825 100%);
     display: flex;
     flex-direction: column;
 `
@@ -17,6 +17,7 @@ const Content = styled.main`
 const layout = (props) => (
     <Fragment>
         <Toolbar />
+        <SideDrawer />
         <Content>
             {props.children}
         </Content>

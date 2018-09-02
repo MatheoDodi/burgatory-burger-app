@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 const BurgerShape = styled.div`
     width: 100%;
-    margin: 90px auto 30px auto;
+    margin: auto;
+    padding-top: 3rem;
     height: 250px;
     overflow: scroll;
     text-align: center;
