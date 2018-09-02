@@ -13,8 +13,8 @@ const SideDrawerDiv = styled.div`
     left: 0;
     top: 0;
     z-index: 70;
+    padding-top: 2rem;
     background: linear-gradient(to top, #141e30, #243b55);
-    padding: 32px 16px;
     box-sizing: border-box;
     transition: transfrom 0.3s ease-out;
     box-shadow: 9px 0px 10px rgba(0,0,0,.70);

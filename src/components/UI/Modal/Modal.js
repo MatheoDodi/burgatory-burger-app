@@ -8,11 +8,13 @@ const ModalDiv = styled.div`
     background-color: white;
     width: 70%;
     border: 1px solid #ccc;
+    border-radius: 15px;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 15%;
     top: 30%;
     box-sizing: border-box;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.75);
     transition: opacity 0.4s ease-out, transform 0.3s ease-out;
     @media (min-width: 600px) {
         width: 500px;
