@@ -13,7 +13,8 @@ const BuildControlButton = styled.button`
     font: inherit;
     padding: 5px;
     margin: 0 5px;
-    border: 1px solid #AA6817;
+    border: 1px solid black;
+    background: #EEF2F4;
     border-radius: 2.5px;
     cursor: pointer;
     outline: none;
