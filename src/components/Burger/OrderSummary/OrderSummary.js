@@ -46,7 +46,7 @@ class OrderSummary extends Component {
                 <h3>Total: ${this.props.total.toFixed(2)}</h3>
                 <p>Continue to Checkout</p>
                 <DangerButton onClick={this.props.cancel}>Cancel</DangerButton>
-                <SuccessButton>Continue</SuccessButton>
+                <SuccessButton onClick={this.props.continue}>Continue</SuccessButton>
             </Fragment>
         )
     }
