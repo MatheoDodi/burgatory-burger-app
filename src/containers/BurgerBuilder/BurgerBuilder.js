@@ -24,7 +24,8 @@ class BurgerBuilder extends Component {
         totalPrice: 4,
         ordering: false,
         loading: false,
-        orderComplete: false
+        orderComplete: false,
+        error: false
     }
 
     orderContinueHnalder = () => {
@@ -35,8 +36,8 @@ class BurgerBuilder extends Component {
             customer: {
                 name: 'Matthew Dodi',
                 address : {
-                    street: 'Rosa Drew Ln',
-                    zipCode : '92612',
+                    street: 'Test Street',
+                    zipCode : '92012',
                     country: 'USA'
                 },
                 email: 'matthew.dodi@gmail.com'
