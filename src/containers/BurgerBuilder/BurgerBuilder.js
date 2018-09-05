@@ -28,6 +28,13 @@ class BurgerBuilder extends Component {
         error: false
     }
 
+    componentDidMount() {
+        axios.get('https://burgatory-burger-app.firebaseio.com/ingredients.json')
+            .then(response => {
+                console.log(response);
+            })
+    }
+
     orderContinueHnalder = () => {
         this.setState({loading : true});
         const order = {
