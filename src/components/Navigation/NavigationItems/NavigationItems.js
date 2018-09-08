@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const NavigationList = styled.ul`
     margin: 0;
@@ -41,11 +42,12 @@ const ListItem = styled.li`
     }
 `
 
+
 const navigationItems = (props) => {
   return (
     <NavigationList display={props.display}>
-        <ListItem textSize={props.textSize}><a>Burger Builder</a></ListItem>
-        <ListItem textSize={props.textSize}><a>Checkout</a></ListItem>
+        <ListItem onClick={props.goBurgerBuilder} textSize={props.textSize}><NavLink to="/">Burger Builder</NavLink></ListItem>
+        <ListItem onClick={props.goCheckout} textSize={props.textSize}><NavLink to="/checkout">Checkout</NavLink></ListItem>
     </NavigationList>
   )
 }

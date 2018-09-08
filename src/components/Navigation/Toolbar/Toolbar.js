@@ -47,7 +47,7 @@ const toolbar = (props) => (
             <MenuIconLines />
         </MenuIconDiv>
         <Logo height={"80%"}/>
-        <NavigationItems display={'none'}/>
+        <NavigationItems goBurgerBuilder={props.goBurgerBuilder} goCheckout={props.goCheckout} display={'none'}/>
     </Header>
 );
 

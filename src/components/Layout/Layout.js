@@ -32,7 +32,9 @@ class Layout extends Component {
     render() {
         return (
             <Fragment>
-                <Toolbar showSidebar={this.showSidebarHandler}/>
+                <Toolbar goCheckout={this.props.goCheckout}
+                         showSidebar={this.showSidebarHandler}
+                         goBurgerBuilder={this.props.goBurgerBuilder}/>
                 <SideDrawer 
                     showSidebar={this.state.showSidebar}
                     hideSidebar ={this.hideSidebarHandler}/>

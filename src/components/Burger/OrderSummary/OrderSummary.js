@@ -28,7 +28,6 @@ const DangerButton = styled.button`
 `
 
 class OrderSummary extends Component {
-    
     render() {
         const showIngredients = Object.keys(this.props.ingredients).map((keyIngr,index) => {
             return  <li key={keyIngr} style={{textTransform: 'Capitalize'}}>
