@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from '../../../axios-orders';
 import Spinner from '../../..//components/UI/Spinnner/Spinner';
+import { withRouter } from 'react-router-dom'
 
 const ContactDataContainer = styled.div`
     margin: 3rem auto;
@@ -98,4 +99,4 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+export default withRouter(ContactData);
