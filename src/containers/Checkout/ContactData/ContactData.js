@@ -39,7 +39,7 @@ const Input = styled.input`
 
 const SpinnerContainer = styled.div`
     width: 500px;
-    position: fixed;
+    position: realtive;
     z-index: 100;
 `
 
@@ -73,31 +73,34 @@ class ContactData extends Component {
             deliveryMethod: 'fastest'
         }
         axios.post('/orders.json', order)
-            .then(response => setTimeout(() => this.setState({loading: false}), 2000))
+            .then(response => {
+                setTimeout(() => {
+                    this.setState({loading: false});
+                    this.props.history.push('/');
+                }, 2000);
+            })
             .catch(error => this.setState({loading: false}))
     }
 
     render() { 
-        let spin = null;
+        let form = null;
         if (this.state.loading) {
-            spin = <SpinnerContainer>
-                    <Spinner />
-                </SpinnerContainer>
+            form = <Form><Spinner /></Form>
+        } else {
+            form =  <Form>
+                        <Input type="text" name="name" placeholder="Your Name" />
+                        <Input type="email" name="email" placeholder="Your E-mail" />
+                        <Input type="text" name="street" placeholder="Street" />
+                        <Input type="text" name="zip" placeholder="ZIP Code" />
+                        <SuccessButton onClick={this.orderHandler}>Place Order</SuccessButton>
+                    </Form>
         }
-
-        return (
-            <ContactDataContainer>
-                            {spin}
-							<h2>Enter your Contact Data</h2>
-							<Form>
-								<Input type="text" name="name" placeholder="Your Name" />
-								<Input type="email" name="email" placeholder="Your E-mail" />
-								<Input type="text" name="street" placeholder="Street" />
-								<Input type="text" name="zip" placeholder="ZIP Code" />
-                                <SuccessButton onClick={this.orderHandler}>Place Order</SuccessButton>
-							</Form>
-            </ContactDataContainer>
-        )
+            return (
+                <ContactDataContainer>
+                                <h2>Enter your Contact Data</h2>
+                                {form}
+                </ContactDataContainer>
+            )
     }
 }
 
