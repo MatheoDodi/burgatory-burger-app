@@ -37,12 +37,6 @@ const Input = styled.input`
     }
 `
 
-const SpinnerContainer = styled.div`
-    width: 500px;
-    position: realtive;
-    z-index: 100;
-`
-
 class ContactData extends Component {
     state = {
         name: '',
@@ -97,7 +91,7 @@ class ContactData extends Component {
         }
             return (
                 <ContactDataContainer>
-                                <h2>Enter your Contact Data</h2>
+                                <h2>Enter your contact data bellow</h2>
                                 {form}
                 </ContactDataContainer>
             )

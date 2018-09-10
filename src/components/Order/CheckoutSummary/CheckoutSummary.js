@@ -8,32 +8,6 @@ const SummaryDiv = styled.div`
 	margin: auto;
 `
 
-const SuccessButton = styled.button`
-    background-color: transparent;
-    border: none;
-    color: #5C9210;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
-    font-size: 1.35rem;
-`
-
-const DangerButton = styled.button`
-    background-color: transparent;
-    border: none;
-    color: #EF233C;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
-    font-size: 1.35rem;
-`
-
 const checkoutSummary = (props) => {
     return (
         <SummaryDiv>
@@ -41,8 +15,7 @@ const checkoutSummary = (props) => {
             <div style={{width: '100%', margin: 'auto'}}>
 				<Burger ingredients={props.ingredients} />
             </div>
-			<DangerButton onClick={props.onCheckoutCancel}>Cancel</DangerButton>
-			<SuccessButton onClick={props.onCheckoutContinue}>Confirm</SuccessButton>
+            <h3>Let's get that belly filled up!</h3>
         </SummaryDiv>
     )
 }
