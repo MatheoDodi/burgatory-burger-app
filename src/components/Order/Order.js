@@ -6,21 +6,20 @@ const OrderContainer = styled.div`
     border: 1px solid rgba(0,0,0,.2);
     box-shadow: 0 4px 5px rgba(0,0,0,.25);
     border-radius: 15px;
-    padding: 10px;
+    padding: 30px;
     margin: 10px auto;
     box-sizing: border-box;
 `
 
 const List = styled.ul`
     list-style: none;
-    padding: 10px 22px;
+    padding: 10px 0;
     margin: 0;
 `
 
 const ListItem = styled.li`
     display: inline-block;
     margin: 0 3rem 2rem 0;
-    padding: 10px;
     &::first-letter {
         text-transform: capitalize;
     }
@@ -28,12 +27,13 @@ const ListItem = styled.li`
 
 const order = (props) => (
     <OrderContainer>
+        <h3>Ingredients</h3>
         <List>
             {Object.keys(props.ingredients).map(ing => (
                     <ListItem key={ing} >{ing} : {props.ingredients[ing]}</ListItem>
             ))}
         </List>
-        <p style={{marginLeft: '2rem'}}>Price <strong>$ {Number.parseFloat(props.price).toFixed(2)}</strong></p>
+        <h3 style={{margin: '0'}}>Price <strong>$ {Number.parseFloat(props.price).toFixed(2)}</strong></h3>
     </OrderContainer>
 );
 
