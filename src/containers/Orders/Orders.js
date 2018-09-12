@@ -27,14 +27,19 @@ class Orders extends Component {
     }
 
     render() {
+        let showOrders = <p style={{fontSize: '1.2rem'}}>Seems like you haven't made any orders yet.<br /> Head over to the Burger Builder section so we can prepare you an awesome burger!</p>;
+        if (this.state.orders[0]) {
+            showOrders = this.state.orders.map(order => (
+                <Order 
+                    key={order.id}
+                    ingredients={order.ingredients} 
+                    price={order.price} />
+            ))
+        }
+
         return(
-            <div>
-                {this.state.orders.map(order => (
-                    <Order 
-                        key={order.id}
-                        ingredients={order.ingredients} 
-                        price={order.price} />
-                ))}
+            <div style={{textAlign: 'center'}}>
+                {showOrders}
             </div>
         )
     }

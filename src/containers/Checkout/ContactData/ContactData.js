@@ -6,9 +6,14 @@ import Input from '../../../components/UI/Input/Input';
 import { withRouter } from 'react-router-dom'
 
 const ContactDataContainer = styled.div`
+    padding: 1rem;
     margin: 3rem auto;
-    width: 400px;
+    width: 500px;
     text-align: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.2);
 `
 
 const SuccessButton = styled.button`
@@ -25,30 +30,65 @@ const SuccessButton = styled.button`
 `
 
 const Form = styled.form`
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
+    width: 100%;
 `
 
-const Input = styled.input`
-    height: 20px;
-    font-size: 20px;
-    padding: 15px;
-    &:focus {
-        outline-color: red;
-    }
-`
 
 class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm : {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name',
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street',
+                },
+                value: ''
+            },
+            zipCode : {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'ZIP Code',
+                },
+                value: ''
+            },
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Country',
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'email',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your E-mail',
+                },
+                value: ''
+            },
+            deliveryMethod: {
+                elementType: 'input',
+                elementConfig: {
+                    options: [
+                        {value: 'fastest', displayValue: 'Fastest'},
+                        {value: 'normal', displayValue: 'Normal'}
+                    ]
+                }
+            }
         },
         loading: false,
-
+        
     }
 
     orderHandler = (event) => {
@@ -57,16 +97,6 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ingredients,
             price : this.props.price,
-            customer: {
-                name: 'Matthew Dodi',
-                address : {
-                    street: 'Test Street',
-                    zipCode : '92012',
-                    country: 'USA'
-                },
-                email: 'matthew.dodi@gmail.com'
-            },
-            deliveryMethod: 'fastest'
         }
         axios.post('/orders.json', order)
             .then(response => {
@@ -84,10 +114,10 @@ class ContactData extends Component {
             form = <Form><Spinner /></Form>
         } else {
             form =  <Form>
-                        <Input type="text" name="name" placeholder="Your Name" />
-                        <Input type="email" name="email" placeholder="Your E-mail" />
-                        <Input type="text" name="street" placeholder="Street" />
-                        <Input type="text" name="zip" placeholder="ZIP Code" />
+                        <Input elementType=".." elementConfig=".." value=".."/>
+                        <Input inputType="input" type="email" name="email" placeholder="Your E-mail" />
+                        <Input inputType="input" type="text" name="street" placeholder="Street" />
+                        <Input inputType="input" type="text" name="zip" placeholder="ZIP Code" />
                         <SuccessButton onClick={this.orderHandler}>Place Order</SuccessButton>
                     </Form>
         }

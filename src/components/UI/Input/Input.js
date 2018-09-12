@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
-const InputContainer = styled.div`
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-`
 const Label = styled.label`
+    width: 100%;
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
 `
 
 const Input = styled.input`
+    box-sizing: border-box;
     border: 1px solid #ccc;
     backdrop-filter: white;
     font: inherit;
     padding: 6px 10px;
+    margin-bottom: 2rem;
     display: block;
     width: 100%;
     &:focus {
@@ -26,7 +24,7 @@ const Input = styled.input`
 `
 
 
-const input = () => {
+const input = (props) => {
     let inputElement = null;
 
     switch (props.inputType) {
@@ -41,10 +39,10 @@ const input = () => {
     }
 
     return (
-        <InputContainer>
+        <Fragment>
             <Label>{props.label}</Label>
             {inputElement}
-        </InputContainer>
+        </Fragment>
 )};
 
 export default input
