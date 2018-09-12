@@ -70,19 +70,19 @@ class ContactData extends Component {
                 value: ''
             },
             email: {
-                elementType: 'email',
+                elementType: 'input',
                 elementConfig: {
-                    type: 'text',
+                    type: 'e-mail',
                     placeholder: 'Your E-mail',
                 },
                 value: ''
             },
             deliveryMethod: {
-                elementType: 'input',
+                elementType: 'select',
                 elementConfig: {
                     options: [
-                        {value: 'fastest', displayValue: 'Fastest'},
-                        {value: 'normal', displayValue: 'Normal'}
+                        {value: 'normal', displayValue: 'Normal'},
+                        {value: 'fastest', displayValue: 'Fastest'}
                     ]
                 }
             }
@@ -108,16 +108,38 @@ class ContactData extends Component {
             .catch(error => this.setState({loading: false}))
     }
 
+    formChangeHandler = (event, id) => {
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        }
+        const updatedFormElement = {...updatedOrderForm[id]};
+        updatedFormElement.value= event.target.value;
+        updatedOrderForm[id] = updatedFormElement;
+        this.setState( {orderForm: updatedOrderForm} );
+    }  
+
     render() { 
+        const formElementsArray = [];
+        for (let key in this.state.orderForm) {
+            formElementsArray.push({
+                id: key,
+                config: this.state.orderForm[key]
+            });
+        }
+
         let form = null;
         if (this.state.loading) {
             form = <Form><Spinner /></Form>
         } else {
             form =  <Form>
-                        <Input elementType=".." elementConfig=".." value=".."/>
-                        <Input inputType="input" type="email" name="email" placeholder="Your E-mail" />
-                        <Input inputType="input" type="text" name="street" placeholder="Street" />
-                        <Input inputType="input" type="text" name="zip" placeholder="ZIP Code" />
+                        {formElementsArray.map(formElement => (
+                            <Input 
+                                elementType={formElement.config.elementType}
+                                elementConfig={formElement.config.elementConfig}
+                                value={formElement.config.value}
+                                changed={(event) => this.formChangeHandler(event, formElement.id)}
+                                key={formElement.id} />
+                        ))}
                         <SuccessButton onClick={this.orderHandler}>Place Order</SuccessButton>
                     </Form>
         }
