@@ -6,20 +6,26 @@ import Input from '../../../components/UI/Input/Input';
 import { withRouter } from 'react-router-dom'
 
 const ContactDataContainer = styled.div`
+    box-sizing: border-box;
     padding: 1rem;
     margin: 3rem auto;
-    width: 500px;
+    width: 450px;
     text-align: center;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,.2);
+    @media (max-width: 800px) {
+        width: 350px;
+    }
 `
 
 const SuccessButton = styled.button`
-    background-color: transparent;
-    border: none;
-    color: #5C9210;
+    border: #5C9210;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    background-color: #38c900;
     outline: none;
     cursor: pointer;
     font: inherit;
@@ -27,6 +33,12 @@ const SuccessButton = styled.button`
     margin: 10px;
     font-weight: bold;
     font-size: 1.35rem;
+    &:disabled {
+        color: gray;
+        border: 1px solid rgba(0,0,0,.35);
+        background-color: white;
+        cursor: not-allowed;
+    }
 `
 
 const Form = styled.form`
@@ -112,12 +124,14 @@ class ContactData extends Component {
                     ]
                 },
                 value: '',
+                valid: true,
                 validation: {
                     required: true
                 }
             }
         },
-        loading: false,   
+        formIsValid : false,
+        loading: false,
     }
 
     checkIfTouched = (event, id) => {
@@ -155,6 +169,7 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault();
+
         this.setState({loading : true});
         const formData = {};
         for (let key in this.state.orderForm) {
@@ -185,8 +200,12 @@ class ContactData extends Component {
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedOrderForm[id] = updatedFormElement;
 
-        console.log(updatedFormElement);
-        this.setState( {orderForm: updatedOrderForm} );
+        let formIsValid = true;
+        for (let id in updatedOrderForm) {
+            formIsValid = updatedOrderForm[id].valid && formIsValid;
+        }
+
+        this.setState( {orderForm: updatedOrderForm, formIsValid: formIsValid} );
     }  
 
     render() { 
@@ -214,7 +233,7 @@ class ContactData extends Component {
                                 changed={(event) => this.formChangeHandler(event, formElement.id)}
                                 key={formElement.id} />
                         ))}
-                        <SuccessButton>Place Order</SuccessButton>
+                        <SuccessButton disabled={!this.state.formIsValid}>Place Order</SuccessButton>
                     </Form>
         }
             return (

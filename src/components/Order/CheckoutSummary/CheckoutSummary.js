@@ -12,9 +12,9 @@ const checkoutSummary = (props) => {
     return (
         <SummaryDiv>
             <h1>We hope it tastes delicious!</h1>
-            <div style={{width: '100%', margin: 'auto'}}>
+            { /* <div style={{width: '100%', margin: 'auto'}}>
 				<Burger ingredients={props.ingredients} />
-            </div>
+            </div> */}
             <h3>Let's get that belly filled up!</h3>
         </SummaryDiv>
     )

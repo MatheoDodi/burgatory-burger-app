@@ -20,7 +20,6 @@ const Input = styled.input`
     &:focus {
         background-color: #ccc;
         outline-color: aqua;
-        background-color: #ccc;
     }
 `
 
