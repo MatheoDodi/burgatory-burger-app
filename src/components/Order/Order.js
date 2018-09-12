@@ -27,7 +27,8 @@ const ListItem = styled.li`
 
 const order = (props) => (
     <OrderContainer>
-        <h3>Ingredients</h3>
+        <p>Order submitted by: {props.data.name}.<br /> Preffered delivery method: {props.data.deliveryMethod}</p>
+        <span>Ingredients</span>
         <List>
             {Object.keys(props.ingredients).map(ing => (
                     <ListItem key={ing} >{ing} : {props.ingredients[ing]}</ListItem>

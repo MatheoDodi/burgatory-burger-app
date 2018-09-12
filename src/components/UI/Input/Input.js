@@ -10,8 +10,8 @@ const Label = styled.label`
 
 const Input = styled.input`
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    backdrop-filter: white;
+    border: ${props => props.touched ? (props.invalid ? '1px solid #ccc' : '1px solid red') : '1px solid #ccc'};
+    background-color: ${props => props.touched ? (props.invalid ? 'white' : '#ffcccc') : 'white'};
     font: inherit;
     padding: 6px 10px;
     margin-bottom: 2rem;
@@ -45,13 +45,19 @@ const input = (props) => {
 
     switch (props.elementType) {
         case ('input'): 
-            inputElement = <Input 
+            inputElement = <Input
+                onClick={props.clicked}
+                touched={props.touched}
+                invalid={props.invalid} 
                 {...props.elementConfig} 
                 value={props.value} 
                 onChange={props.changed} />
             break;
         case ('text-area'):
-            inputElement = <textarea 
+            inputElement = <textarea
+                onClick={props.clicked}
+                touched={props.touched}
+                invalid={props.invalid} 
                 {...props.elementConfig} 
                 value={props.value} 
                 onChange={props.changed} />
@@ -63,7 +69,10 @@ const input = (props) => {
                             </Select>
             break;
         default:
-            inputElement = <Input 
+            inputElement = <Input
+                onClick={props.clicked}
+                touched={props.touched}
+                invalid={props.invalid}  
                 {...props.elementConfig} 
                 value={props.value} />
     }
