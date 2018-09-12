@@ -123,7 +123,7 @@ class ContactData extends Component {
                         {value: 'fastest', displayValue: 'Fastest'}
                     ]
                 },
-                value: '',
+                value: 'normal',
                 valid: true,
                 validation: {
                     required: true

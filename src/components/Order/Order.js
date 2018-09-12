@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const OrderContainer = styled.div` 
-    width: 80%;
+    width: 60%;
     border: 1px solid rgba(0,0,0,.2);
-    box-shadow: 0 4px 5px rgba(0,0,0,.25);
+    box-shadow: 0 5px 8px rgba(0,0,0,.25);
     border-radius: 15px;
     padding: 30px;
-    margin: 10px auto;
+    margin: 20px auto;
     box-sizing: border-box;
+    @media (max-width: 800px) {
+        width: 90%;
+    }
 `
 
 const List = styled.ul`
