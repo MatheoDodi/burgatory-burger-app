@@ -1,2 +1,11 @@
 # burgatory-burger-app
-Creating a burger builder app entirely in React
+
+Burger Restaurant app created entirely in React.js.
+
+Also used for this web app :
+
+ - Router.js
+ - Styled-components
+ - Redux.js
+
+View here ( https://burgatory-react-app.herokuapp.com/ )
