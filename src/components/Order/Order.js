@@ -30,7 +30,7 @@ const ListItem = styled.li`
 
 const order = (props) => (
     <OrderContainer>
-        <p>Order submitted by: {props.data.name}.<br /> Preffered delivery method: {props.data.deliveryMethod}</p>
+        <p>Order submitted by: {props.data.name}<br /> Preffered delivery method: {props.data.deliveryMethod}</p>
         <span>Ingredients</span>
         <List>
             {Object.keys(props.ingredients).map(ing => (
