@@ -10,31 +10,15 @@ import * as actionTypes from '../../store/actions';
 
 class BurgerBuilder extends Component {
     state = {
-        totalPrice: 4,
         ordering: false,
         loading: false,
         orderComplete: false,
         error: false
     }
 
-    componentDidMount() {
-        console.log(this.props);
-        axios.get('https://burgatory-burger-app.firebaseio.com/ingredients.json')
-            .then(response => {
-                
-            })
-    }
-
     orderContinueHnalder = () => {
-        const queryParams = [];
-        for (let i in this.state.ingredients) {
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
-        }
-        queryParams.push('price=' + this.state.totalPrice);
-        const queryString = queryParams.join('&');
         this.props.history.push({
             pathname: '/checkout',
-            search: '?' + queryString
         });
     }
 
@@ -46,32 +30,6 @@ class BurgerBuilder extends Component {
         this.setState( {ordering: false, orderComplete: false} );
     }
 
-    // addIngredientHandler = (type) => {
-    //     const oldCount = this.state.ingredients[type];
-    //     const updatedCount = oldCount + 1;
-    //     const updatedIngredients = {
-    //         ...this.state.ingredients
-    //     };
-    //     updatedIngredients[type] = updatedCount;
-    //     const priceAddition = INGREDIENT_PRICES[type];
-    //     const newPrice = this.state.totalPrice + priceAddition;
-    //     this.setState( {ingredients: updatedIngredients, totalPrice: newPrice} )
-    // }
-
-    // removeIngredientHandler = (type) => {
-    //         const oldCount = this.state.ingredients[type];
-    //         if (oldCount > 0) {
-    //             const updatedCount = oldCount - 1;
-    //             const updatedIngredients = {
-    //             ...this.state.ingredients
-    //             };
-    //             updatedIngredients[type] = updatedCount;
-    //             const priceDeduction = INGREDIENT_PRICES[type];
-    //             const newPrice = this.state.totalPrice - priceDeduction;
-    //             this.setState( {ingredients: updatedIngredients, totalPrice: newPrice} )
-    //         }
-    // }
-
     render() {
         const disabledInfo = {
             ...this.props.ings
@@ -80,7 +38,7 @@ class BurgerBuilder extends Component {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
 
-        const disabledButtonCheck = this.state.totalPrice === 4;
+        const disabledButtonCheck = this.props.totalPrc === 4;
 
         let orderSummary = <OrderSummary 
             ingredients={this.props.ings}

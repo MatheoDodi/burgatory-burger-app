@@ -181,6 +181,10 @@ class ContactData extends Component {
             ingredients: this.props.ingredients,
             price : this.props.price,
         }
+
+        if (this.state.orderForm.deliveryMethod.value === 'fastest') {
+            order.price += 2;
+        }
         axios.post('/orders.json', order)
             .then(response => {
                 setTimeout(() => {

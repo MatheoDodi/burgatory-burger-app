@@ -79,6 +79,7 @@ const input = (props) => {
     return (
         <Fragment>
             <Label>{props.label}</Label>
+            {props.value === 'fastest' ? <span>Additional Charge of <strong>$2.00</strong></span> : null}
             {inputElement}
         </Fragment>
 )};
