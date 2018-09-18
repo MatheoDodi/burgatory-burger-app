@@ -18,6 +18,7 @@ class App extends Component {
           <Switch>
 						<Route path="/checkout" component={Checkout} />
             <Route path="/orders" component={Orders} />
+            <Route path="/order-complete" component={OrderComplete} />
             <Route exact path='/' component={BurgerBuilder}/>
 						<Route render={() => <div style={{width: '100%', textAlign: 'center'}}><h1>Oops, You must've taken a wrong turn somewhere! <br /> We know you're hungry, so why not navigate to our <NavLink to="/">Home</NavLink> Page?</h1></div>} />
 					</Switch>

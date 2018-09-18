@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import axios from '../../../axios-orders';
+import * as actions from '../../../store/actions/index';
 import Spinner from '../../..//components/UI/Spinnner/Spinner';
 import Input from '../../../components/UI/Input/Input';
-import OrderComplete from '../../../components/Order/OrderComplete/OrderComplete';
-import { withRouter, Route, Switch } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 const ContactDataContainer = styled.div`
     box-sizing: border-box;
@@ -132,7 +133,6 @@ class ContactData extends Component {
             }
         },
         formIsValid : false,
-        loading: false,
     }
 
     checkIfTouched = (event, id) => {
@@ -179,21 +179,16 @@ class ContactData extends Component {
 
         const order = {
             orderData: formData,
-            ingredients: this.props.ingredients,
-            price : this.props.price,
+            ingredients: this.props.ingr,
+            price : this.props.totalPrc
         }
 
         if (this.state.orderForm.deliveryMethod.value === 'fastest') {
             order.price += 2;
         }
-        axios.post('/orders.json', order)
-            .then(response => {
-                setTimeout(() => {
-                    this.setState({loading: false});
-                    this.props.history.push('/order-complete');
-                }, 2000);
-            })
-            .catch(error => this.setState({loading: false}))
+
+        this.props.onOrderLoading();
+        this.props.onOrderBurger(order);
     }
 
     formChangeHandler = (event, id) => {
@@ -223,7 +218,7 @@ class ContactData extends Component {
         }
 
         let form = null;
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Form><Spinner /></Form>
         } else {
             form =  <Form onSubmit={this.orderHandler}>
@@ -242,15 +237,27 @@ class ContactData extends Component {
                     </Form>
         }
             return (
-                <Fragment>
-                    <ContactDataContainer>
-                                    <h2>Enter your contact data bellow</h2>
-                                    {form}
-                    </ContactDataContainer>
-                    <Route path="/order-complete" component={OrderComplete} />
-                </Fragment>
+                <ContactDataContainer>
+                    <h2>Enter your contact data bellow</h2>
+                    {form}
+                </ContactDataContainer>
             )
     }
 }
 
-export default withRouter(ContactData);
+const mapStateToProps = state => {
+	return {
+		ingr: state.burgerBuilder.ingredients,
+        totalPrc: state.burgerBuilder.totalPrice,
+        loading: state.order.loading
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData)),
+        onOrderLoading: () => dispatch(actions.purchaseBurgerStart())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ContactData));

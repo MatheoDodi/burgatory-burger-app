@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from '../Checkout/ContactData/ContactData';
 
@@ -21,17 +20,10 @@ class Checkout extends Component {
 					ingredients={this.props.ingr}
 					onCheckoutCancel={this.onCheckoutCancelHandler}
 					onCheckoutContinue={this.onCheckoutContinueHandler}/>
-				<ContactData price={this.props.totalPrc} ingredients={this.props.ingr} />
+				<ContactData />
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		ingr: state.ingredients,
-		totalPrc: state.totalPrice
-	}
-}
-
-export default connect(mapStateToProps)(Checkout);
+export default Checkout;
