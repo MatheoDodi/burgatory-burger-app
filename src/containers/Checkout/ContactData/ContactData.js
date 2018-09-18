@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import axios from '../../../axios-orders';
 import Spinner from '../../..//components/UI/Spinnner/Spinner';
 import Input from '../../../components/UI/Input/Input';
-import { withRouter } from 'react-router-dom'
+import OrderComplete from '../../../components/Order/OrderComplete/OrderComplete';
+import { withRouter, Route, Switch } from 'react-router-dom'
 
 const ContactDataContainer = styled.div`
     box-sizing: border-box;
@@ -189,7 +190,7 @@ class ContactData extends Component {
             .then(response => {
                 setTimeout(() => {
                     this.setState({loading: false});
-                    this.props.history.push('/');
+                    this.props.history.push('/order-complete');
                 }, 2000);
             })
             .catch(error => this.setState({loading: false}))
@@ -241,10 +242,13 @@ class ContactData extends Component {
                     </Form>
         }
             return (
-                <ContactDataContainer>
-                                <h2>Enter your contact data bellow</h2>
-                                {form}
-                </ContactDataContainer>
+                <Fragment>
+                    <ContactDataContainer>
+                                    <h2>Enter your contact data bellow</h2>
+                                    {form}
+                    </ContactDataContainer>
+                    <Route path="/order-complete" component={OrderComplete} />
+                </Fragment>
             )
     }
 }

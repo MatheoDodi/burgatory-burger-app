@@ -5,9 +5,7 @@ import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 const Content = styled.main`
     box-sizing: border-box;
-    margin-top: 3rem;
-    margin-bottom: 0;
-    padding-top: 2rem;
+    padding-top: 4rem;
     min-height: 100vh;
     background: #EDF2F4;
     display: flex;

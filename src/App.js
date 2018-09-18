@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
+import OrderComplete from './components/Order/OrderComplete/OrderComplete';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
 
