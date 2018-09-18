@@ -8,21 +8,8 @@ import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinnner/Spinner';
 import * as actionTypes from '../../store/actions';
 
-const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.6,
-    meat: 1.3,
-    bacon: 0.7
-}
-
 class BurgerBuilder extends Component {
     state = {
-        ingredients: {
-            salad: 0,
-            meat: 0,
-            bacon: 0,
-            cheese: 0
-        },
         totalPrice: 4,
         ordering: false,
         loading: false,
@@ -59,35 +46,35 @@ class BurgerBuilder extends Component {
         this.setState( {ordering: false, orderComplete: false} );
     }
 
-    addIngredientHandler = (type) => {
-        const oldCount = this.state.ingredients[type];
-        const updatedCount = oldCount + 1;
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
-        updatedIngredients[type] = updatedCount;
-        const priceAddition = INGREDIENT_PRICES[type];
-        const newPrice = this.state.totalPrice + priceAddition;
-        this.setState( {ingredients: updatedIngredients, totalPrice: newPrice} )
-    }
+    // addIngredientHandler = (type) => {
+    //     const oldCount = this.state.ingredients[type];
+    //     const updatedCount = oldCount + 1;
+    //     const updatedIngredients = {
+    //         ...this.state.ingredients
+    //     };
+    //     updatedIngredients[type] = updatedCount;
+    //     const priceAddition = INGREDIENT_PRICES[type];
+    //     const newPrice = this.state.totalPrice + priceAddition;
+    //     this.setState( {ingredients: updatedIngredients, totalPrice: newPrice} )
+    // }
 
-    removeIngredientHandler = (type) => {
-            const oldCount = this.state.ingredients[type];
-            if (oldCount > 0) {
-                const updatedCount = oldCount - 1;
-                const updatedIngredients = {
-                ...this.state.ingredients
-                };
-                updatedIngredients[type] = updatedCount;
-                const priceDeduction = INGREDIENT_PRICES[type];
-                const newPrice = this.state.totalPrice - priceDeduction;
-                this.setState( {ingredients: updatedIngredients, totalPrice: newPrice} )
-            }
-    }
+    // removeIngredientHandler = (type) => {
+    //         const oldCount = this.state.ingredients[type];
+    //         if (oldCount > 0) {
+    //             const updatedCount = oldCount - 1;
+    //             const updatedIngredients = {
+    //             ...this.state.ingredients
+    //             };
+    //             updatedIngredients[type] = updatedCount;
+    //             const priceDeduction = INGREDIENT_PRICES[type];
+    //             const newPrice = this.state.totalPrice - priceDeduction;
+    //             this.setState( {ingredients: updatedIngredients, totalPrice: newPrice} )
+    //         }
+    // }
 
     render() {
         const disabledInfo = {
-            ...this.props.ings;
+            ...this.props.ings
         };
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
@@ -99,7 +86,7 @@ class BurgerBuilder extends Component {
             ingredients={this.props.ings}
             cancel={this.orderCancelHandler}
             continue={this.orderContinueHnalder}
-            total={this.state.totalPrice} />
+            total={this.props.totalPrc} />
 
         if (this.state.loading) {
             orderSummary = <Spinner />
@@ -122,7 +109,7 @@ class BurgerBuilder extends Component {
                     ingredientAdded={this.props.onIngredientAdded}
                     ingredientRemoved={this.props.onIngredientRemoved}
                     disabled={disabledInfo}
-                    price={this.state.totalPrice}
+                    price={this.props.totalPrc}
                     disabledButton={disabledButtonCheck}
                     order={this.orderButtonHandler} />
             </Fragment>
@@ -132,7 +119,8 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients
+        ings: state.ingredients,
+        totalPrc: state.totalPrice
     }
 }
 
