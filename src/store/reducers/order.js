@@ -35,6 +35,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 purchased: false
             }
+        case actionTypes.FETCH_ORDERS_SUCCESS:
+            return {
+                ...state,
+                orders: action.orders
+            }
         default: 
             return state;
     }
