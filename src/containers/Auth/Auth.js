@@ -40,6 +40,22 @@ const SuccessButton = styled.button`
     }
 `
 
+const AuthInfo = styled.p`
+    color: gray;
+    font-size: .825rem;
+`
+
+const MiniButton = styled.button`
+    outline: none;
+    border: none;
+    font-family: inherit;
+    color: black;
+    font-size: 1rem;
+    &:hover {
+        cursor: pointer;
+    }
+`
+
 const Form = styled.form`
     width: 100%;
 `
@@ -76,12 +92,13 @@ class Auth extends Component {
                 touched: false
             }
         },
-        formIsValid: false
+        formIsValid: false,
+        signUpMode: true
     }
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.signUpMode);
     }
 
     checkIfTouched = (event, id) => {
@@ -137,6 +154,14 @@ class Auth extends Component {
         this.setState( {controls: updatedOrderForm, formIsValid: formIsValid} );
     }  
 
+    switchAuthMode = () => {
+        this.setState( prevState => {
+            return {
+                signUpMode: !prevState.signUpMode
+            }
+        } )
+    }
+
     render () {
         const formElementsArray = [];
         for (let key in this.state.controls) {
@@ -160,13 +185,14 @@ class Auth extends Component {
                                 changed={(event) => this.formChangeHandler(event, formElement.id)}
                                 key={formElement.id} />
                         ))}
-                        <SuccessButton disabled={!this.state.formIsValid}>Sign In</SuccessButton>
+                        <SuccessButton disabled={!this.state.formIsValid}>Sign {this.state.signUpMode ? 'Up' : 'In'}</SuccessButton>
                     </Form>
         
         return (
             <ContactDataContainer>
-                <h2>Please Sign In</h2>
+                <h2>Please Sign {this.state.signUpMode ? 'Up' : 'In'}</h2>
                 {form}
+                {this.state.signUpMode ? <AuthInfo>If you already have an account with us, click <MiniButton onClick={this.switchAuthMode}>Here</MiniButton></AuthInfo> : <AuthInfo>if you don't have an account with us, click <MiniButton onClick={this.switchAuthMode}>Here</MiniButton></AuthInfo>}
             </ContactDataContainer>
         )
     }
@@ -179,7 +205,7 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.auth(email, password))
+        onAuth: (email, password, authMode) => dispatch(actions.auth(email, password, authMode))
     }
 }
 
