@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Burger from '../../Burger/Burger';
 
 const SummaryDiv = styled.div`
 	text-align: center;

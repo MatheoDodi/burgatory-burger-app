@@ -48,6 +48,7 @@ const navigationItems = (props) => {
     <NavigationList display={props.display}>
         <ListItem onClick={props.goBurgerBuilder} textSize={props.textSize}><NavLink to="/">Burger Builder</NavLink></ListItem>
         <ListItem onClick={props.goCheckout} textSize={props.textSize}><NavLink to="/orders">My Orders</NavLink></ListItem>
+        <ListItem onClick={props.goCheckout} textSize={props.textSize}><NavLink to="/sign-in">Sign In</NavLink></ListItem>
     </NavigationList>
   )
 }

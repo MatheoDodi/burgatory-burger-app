@@ -6,7 +6,6 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinnner/Spinner';
 import * as burgerBuilderActions from '../../store/actions/index';
-import burger from '../../components/Burger/Burger';
 
 class BurgerBuilder extends Component {
     state = {

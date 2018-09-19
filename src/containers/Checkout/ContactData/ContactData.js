@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import axios from '../../../axios-orders';
 import * as actions from '../../../store/actions/index';
 import Spinner from '../../..//components/UI/Spinnner/Spinner';
 import Input from '../../../components/UI/Input/Input';
@@ -160,7 +159,7 @@ class ContactData extends Component {
 
         if (rules.length) {
             if (Number(value)) {
-                isValid = value.length == rules.length
+                isValid = value.length === rules.length
             } else {
                 isValid = false;
             }

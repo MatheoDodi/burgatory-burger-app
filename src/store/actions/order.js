@@ -49,12 +49,6 @@ export const fetchOrdersSuccess = (orders) => {
     }
 }
 
-export const fetchOrdersStart = () => {
-    return {
-        type: actionTypes.FETCH_ORDERS_START
-    }
-}
-
 export const fetchOrders = () => {
     return dispatch => {
         axios.get('/orders.json')

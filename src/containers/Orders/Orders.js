@@ -8,7 +8,6 @@ import Spinner from '../../components/UI/Spinnner/Spinner';
 class Orders extends Component {
     state = {
         orders: [],
-        loading: true
     }
 
     componentDidMount() {
