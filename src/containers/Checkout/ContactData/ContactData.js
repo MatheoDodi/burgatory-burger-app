@@ -126,6 +126,7 @@ class ContactData extends Component {
                     ]
                 },
                 value: 'normal',
+                label: 'Delivery Method',
                 valid: true,
                 validation: {
                     required: true
@@ -230,6 +231,7 @@ class ContactData extends Component {
                                 elementType={formElement.config.elementType}
                                 elementConfig={formElement.config.elementConfig}
                                 value={formElement.config.value}
+                                label={formElement.config.label}
                                 changed={(event) => this.formChangeHandler(event, formElement.id)}
                                 key={formElement.id} />
                         ))}

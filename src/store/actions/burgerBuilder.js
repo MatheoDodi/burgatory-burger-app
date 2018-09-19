@@ -7,3 +7,7 @@ export const addIngredient = ingName => {
 export const removeIngredient = ingName => {
     return {type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName}
 }
+
+export const newOrder = () => {
+    return {type: actionTypes.NEW_ORDER}
+}

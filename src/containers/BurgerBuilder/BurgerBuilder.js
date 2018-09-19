@@ -6,6 +6,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinnner/Spinner';
 import * as burgerBuilderActions from '../../store/actions/index';
+import burger from '../../components/Burger/Burger';
 
 class BurgerBuilder extends Component {
     state = {
@@ -77,14 +78,17 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
-        totalPrc: state.burgerBuilder.totalPrice
+        totalPrc: state.burgerBuilder.totalPrice,
+        purchased: state.order.purchased
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onIngredientAdded: (ingr) => dispatch(burgerBuilderActions.addIngredient(ingr)),
-        onIngredientRemoved: (ingr) => dispatch(burgerBuilderActions.removeIngredient(ingr))
+        onIngredientRemoved: (ingr) => dispatch(burgerBuilderActions.removeIngredient(ingr)),
+        onNewOrder: () => dispatch(burgerBuilderActions.newOrder()),
+        onPurchase: () => dispatch(burgerBuilderActions.purchaseInt())
     }
 }
 
