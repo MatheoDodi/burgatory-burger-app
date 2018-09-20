@@ -52,12 +52,13 @@ class NavigationItems extends Component {
         this.props.onClearAllOrders();
     }
 
+
     render () {
         return (
             <NavigationList display={this.props.display}>
-                <ListItem onClick={this.props.goBurgerBuilder} textSize={this.props.textSize}><NavLink to="/">Burger Builder</NavLink></ListItem>
-                <ListItem onClick={this.props.goCheckout} textSize={this.props.textSize}><NavLink to="/orders">My Orders</NavLink></ListItem>
-        <ListItem onClick={this.props.goCheckout} textSize={this.props.textSize}>{this.props.token ? <NavLink onClick={this.logOutHandler} to="/">Log Out</NavLink> : <NavLink to="/sign-in">Sign In</NavLink>}</ListItem>
+                <ListItem onClick={this.props.clicked} textSize={this.props.textSize}><NavLink to="/">Burger Builder</NavLink></ListItem>
+                <ListItem onClick={this.props.clicked} textSize={this.props.textSize}><NavLink to="/orders">My Orders</NavLink></ListItem>
+        <ListItem onClick={this.props.clicked} textSize={this.props.textSize}>{this.props.token ? <NavLink onClick={this.logOutHandler} to="/">Log Out</NavLink> : <NavLink to="/sign-in">Sign In</NavLink>}</ListItem>
             </NavigationList>
         )
     }

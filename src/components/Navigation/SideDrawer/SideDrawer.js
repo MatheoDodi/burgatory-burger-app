@@ -33,7 +33,7 @@ const sideDrawer = (props) => {
             <SideDrawerDiv show={props.showSidebar}>
                 <Logo height={'5%'}/>
                 <nav style={{marginTop: '2rem'}}>
-                    <NavigationItems textSize={'1.25rem'}/>
+                    <NavigationItems clicked={props.hideSidebar} textSize={'1.25rem'}/>
                 </nav>
             </SideDrawerDiv>
             <Backdrop 
