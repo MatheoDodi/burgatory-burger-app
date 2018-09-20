@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 
 const ModalDiv = styled.div`
+    box-sizing: border-box;
     position: fixed;
     z-index: 100;
     background-color: white;
-    width: 70%;
+    width: 85%;
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
-    left: 15%;
+    left: 8%;
     top: 30%;
     box-sizing: border-box;
     box-shadow: 5px 5px 15px rgba(0,0,0,.75);
