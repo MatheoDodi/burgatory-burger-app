@@ -16,6 +16,9 @@ class Orders extends Component {
 
     render() {
         let showOrders = <p style={{textAlign: 'center'}}>Sign in to see your orders!</p>
+        if (this.props.tokenId) {
+            showOrders = <Spinner />
+        }
         if (this.props.orders[0]) {
             showOrders = this.props.orders.map(order => (
                 <Order 
