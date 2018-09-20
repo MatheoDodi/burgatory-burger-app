@@ -5,6 +5,7 @@ import * as actions from '../../../store/actions/index';
 import Spinner from '../../..//components/UI/Spinnner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import { withRouter } from 'react-router-dom'
+import { authStart } from '../../../store/actions/auth';
 
 const ContactDataContainer = styled.div`
     box-sizing: border-box;
@@ -188,7 +189,7 @@ class ContactData extends Component {
         }
 
         this.props.onOrderLoading();
-        this.props.onOrderBurger(order);
+        this.props.onOrderBurger(order, this.props.tokenId);
     }
 
     formChangeHandler = (event, id) => {
@@ -250,13 +251,14 @@ const mapStateToProps = state => {
 	return {
 		ingr: state.burgerBuilder.ingredients,
         totalPrc: state.burgerBuilder.totalPrice,
-        loading: state.order.loading
+        loading: state.order.loading,
+        tokenId: state.auth.token
 	}
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData)),
+        onOrderBurger: (orderData, tokenId) => dispatch(actions.purchaseBurger(orderData, tokenId)),
         onOrderLoading: () => dispatch(actions.purchaseBurgerStart())
     }
 }

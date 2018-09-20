@@ -22,12 +22,13 @@ export const purchaseBurgerStart = () => {
     }
 }
 
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, tokenId) => {
     return dispatch => {
         setTimeout(() => {
-            axios.post('/orders.json', orderData)
+            axios.post('/orders.json?auth=' + tokenId, orderData)
                 .then(response => {
-                    dispatch(purchaseBurgerSuccess(response.data));
+                    console.log();
+                    dispatch(purchaseBurgerSuccess(tokenId, response.data));
                 })
                 .catch(error => {
                     dispatch(purchaseBurgerFail(error));
@@ -49,9 +50,9 @@ export const fetchOrdersSuccess = (orders) => {
     }
 }
 
-export const fetchOrders = () => {
+export const fetchOrders = (tokenId) => {
     return dispatch => {
-        axios.get('/orders.json')
+        axios.get('/orders.json?auth=' + tokenId)
             .then(response => {
                 const fetchedOrders = [];
                 for (let key in response.data) {
@@ -65,5 +66,11 @@ export const fetchOrders = () => {
             .catch(error => {
                console.log(error);
             })
+    }
+}
+
+export const clearOrders = () => {
+    return {
+        type: actionTypes.CLEAR_ORDERS
     }
 }

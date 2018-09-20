@@ -8,9 +8,11 @@ export {
     purchaseBurger,
     purchaseBurgerStart,
     purchaseInt,
-    fetchOrders
+    fetchOrders,
+    clearOrders
 } from './order';
 
 export {
-    auth
+    auth,
+    authLogout
 } from './auth';

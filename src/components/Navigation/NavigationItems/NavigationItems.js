@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import * as actions from '../../../store/actions/index';
 
 const NavigationList = styled.ul`
     margin: 0;
@@ -43,14 +45,35 @@ const ListItem = styled.li`
 `
 
 
-const navigationItems = (props) => {
-  return (
-    <NavigationList display={props.display}>
-        <ListItem onClick={props.goBurgerBuilder} textSize={props.textSize}><NavLink to="/">Burger Builder</NavLink></ListItem>
-        <ListItem onClick={props.goCheckout} textSize={props.textSize}><NavLink to="/orders">My Orders</NavLink></ListItem>
-        <ListItem onClick={props.goCheckout} textSize={props.textSize}><NavLink to="/sign-in">Sign In</NavLink></ListItem>
-    </NavigationList>
-  )
+class NavigationItems extends Component {
+
+    logOutHandler = () => {
+        this.props.onLogOutAuth();
+        this.props.onClearAllOrders();
+    }
+
+    render () {
+        return (
+            <NavigationList display={this.props.display}>
+                <ListItem onClick={this.props.goBurgerBuilder} textSize={this.props.textSize}><NavLink to="/">Burger Builder</NavLink></ListItem>
+                <ListItem onClick={this.props.goCheckout} textSize={this.props.textSize}><NavLink to="/orders">My Orders</NavLink></ListItem>
+        <ListItem onClick={this.props.goCheckout} textSize={this.props.textSize}>{this.props.token ? <NavLink onClick={this.logOutHandler} to="/">Log Out</NavLink> : <NavLink to="/sign-in">Sign In</NavLink>}</ListItem>
+            </NavigationList>
+        )
+    }
 }
 
-export default navigationItems;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogOutAuth: () => dispatch(actions.authLogout()),
+        onClearAllOrders: () => dispatch(actions.clearOrders())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationItems);

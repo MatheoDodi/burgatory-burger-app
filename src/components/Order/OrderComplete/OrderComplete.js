@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as burgerBuilderActions from '../../../store/actions/index';
 
 class OrderComplete extends Component {
-
+    
     componentWillUnmount() {
         this.props.onNewOrder();
         this.props.onPurchase();
@@ -22,14 +22,17 @@ class OrderComplete extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
-        purchased: state.order.purchased
+        purchased: state.order.purchased,
+        loading: state.order.loading,
+        orders: state.order.orders
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onNewOrder: () => dispatch(burgerBuilderActions.newOrder()),
-        onPurchase: () => dispatch(burgerBuilderActions.purchaseInt())
+        onPurchase: () => dispatch(burgerBuilderActions.purchaseInt()),
+        fetchNewOrder: () => dispatch(burgerBuilderActions.fetchOrders())
     }
 }
 

@@ -11,11 +11,11 @@ class Orders extends Component {
     }
 
     componentDidMount() {
-        this.props.onFetchingOrders();
+        this.props.onFetchingOrders(this.props.tokenId);
     }
 
     render() {
-        let showOrders = <Spinner />
+        let showOrders = <p style={{textAlign: 'center'}}>Sign in to see your orders!</p>
         if (this.props.orders[0]) {
             showOrders = this.props.orders.map(order => (
                 <Order 
@@ -36,13 +36,14 @@ class Orders extends Component {
 
 const mapStateToProps = state => {
     return {
-        orders: state.order.orders
+        orders: state.order.orders,
+        tokenId: state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchingOrders: () => dispatch(actions.fetchOrders())
+        onFetchingOrders: (tokenId) => dispatch(actions.fetchOrders(tokenId))
     }
 }
 

@@ -3,6 +3,7 @@ import Input from '../../components/UI/Input/Input';
 import styled from 'styled-components';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
+import Spinner from '../../components/UI/Spinnner/Spinner';
 
 const ContactDataContainer = styled.div`
     box-sizing: border-box;
@@ -187,21 +188,33 @@ class Auth extends Component {
                         ))}
                         <SuccessButton disabled={!this.state.formIsValid}>Sign {this.state.signUpMode ? 'Up' : 'In'}</SuccessButton>
                     </Form>
+            if (this.props.loading) {
+                form = <Form><Spinner /></Form>
+            }
+
+        let errorMessage = null;
+
+        if (this.props.error) {
+            errorMessage = <p style={{color: 'red'}}>{this.props.error.message.replace(/_/g, ' ')}</p>
+        }
         
         return (
             <ContactDataContainer>
                 <h2>Please Sign {this.state.signUpMode ? 'Up' : 'In'}</h2>
                 {form}
+                {errorMessage}
                 {this.state.signUpMode ? <AuthInfo>If you already have an account with us, click <MiniButton onClick={this.switchAuthMode}>Here</MiniButton></AuthInfo> : <AuthInfo>if you don't have an account with us, click <MiniButton onClick={this.switchAuthMode}>Here</MiniButton></AuthInfo>}
             </ContactDataContainer>
         )
     }
 }
 
-// const mapStateToProps = state => {
-// 	return {
-// 	}
-// }
+const mapStateToProps = state => {
+	return {
+        loading: state.auth.loading,
+        error: state.auth.error
+	}
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -209,4 +222,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
