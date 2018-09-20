@@ -37,7 +37,6 @@ class OrderSummary extends Component {
 
         return (
             <Fragment>
-                <h2>Your Order</h2>
                 <p>A delicious burger with the following ingredients:</p>
                 <ul>
                     {showIngredients}

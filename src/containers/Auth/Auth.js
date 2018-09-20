@@ -9,7 +9,7 @@ import Spinner from '../../components/UI/Spinnner/Spinner';
 const ContactDataContainer = styled.div`
     box-sizing: border-box;
     padding: 1rem;
-    margin: 3rem auto;
+    margin: 7rem auto;
     width: 450px;
     text-align: center;
     background-color: white;
