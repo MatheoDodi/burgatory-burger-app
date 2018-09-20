@@ -206,7 +206,7 @@ class Auth extends Component {
                     {errorMessage}
                     {this.state.signUpMode ? <AuthInfo>If you already have an account with us, click <MiniButton onClick={this.switchAuthMode}>Here</MiniButton></AuthInfo> : <AuthInfo>if you don't have an account with us, click <MiniButton onClick={this.switchAuthMode}>Here</MiniButton></AuthInfo>}
                 </ContactDataContainer>
-                {this.props.isSignedIn ? <Redirect to="/sign-in-successful" /> : null}
+                {this.props.isSignedIn ? <Redirect to={{pathname: '/sign-in-successful', state: {signUp: this.state.signUpMode}}} /> : null}
             </Fragment>
         )
     }

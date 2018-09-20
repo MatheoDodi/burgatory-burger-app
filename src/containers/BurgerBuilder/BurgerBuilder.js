@@ -55,6 +55,7 @@ class BurgerBuilder extends Component {
 
         return (
             <Fragment>
+                {this.props.isLoggedIn ? null : <p style={{textAlign: 'center'}}>Please, keep in mind, that you wont be able to complete an order<br/> without being Signed In.</p>}
                 <Modal 
                     show={this.state.ordering}
                     modalClosed={this.orderCancelHandler}>
@@ -78,7 +79,8 @@ const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
         totalPrc: state.burgerBuilder.totalPrice,
-        purchased: state.order.purchased
+        purchased: state.order.purchased,
+        isLoggedIn: state.auth.token
     }
 }
 
