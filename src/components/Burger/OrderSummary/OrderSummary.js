@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SuccessButton = styled.button`
     background-color: transparent;
     border: none;
-    color: #5C9210;
+    color: #64DD17;
     outline: none;
     cursor: pointer;
     font: inherit;
@@ -17,7 +17,7 @@ const SuccessButton = styled.button`
 const DangerButton = styled.button`
     background-color: transparent;
     border: none;
-    color: #EF233C;
+    color: #B00020;
     outline: none;
     cursor: pointer;
     font: inherit;

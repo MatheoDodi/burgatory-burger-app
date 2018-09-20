@@ -6,6 +6,7 @@ import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
 import OrderComplete from './components/Order/OrderComplete/OrderComplete';
 import SuccessfulSignIn from './components/UI/SuccessfulSignIn/SuccessfulSignIn';
+import Home from './containers/Home/Home';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
 
@@ -23,7 +24,8 @@ class App extends Component {
             <Route path="/order-complete" component={OrderComplete} />
             <Route path="/sign-in" component={Auth} />
             <Route path="/sign-in-successful" component={SuccessfulSignIn} />
-            <Route exact path='/' component={BurgerBuilder}/>
+            <Route path='/burger-builder' component={BurgerBuilder}/>
+            <Route exact path='/' component={Home}/>
 						<Route render={() => <div style={{width: '100%', textAlign: 'center'}}><h1>Oops, You must've taken a wrong turn somewhere! <br /> We know you're hungry, so why not navigate to our <NavLink to="/">Home</NavLink> Page?</h1></div>} />
 					</Switch>
         </Layout>

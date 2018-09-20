@@ -4,7 +4,7 @@ import BuildControl from './BuildControl/BuildControl';
 
 const BuildControlsStyle = styled.div`
     width: 100%;
-    background: linear-gradient(to top, #141e30, #243b55);
+    background: #000000;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -17,13 +17,13 @@ const PriceParagraph = styled.p`
     text-align: center;
     margin: 0;
     padding: 1rem;
-    background-color: #EF233C;
+    background-color: #B00020;
     color: white;
 `
 
 const OrderButton = styled.button`
     margin-top: 1rem;
-    background-color: #EF233C;
+    background-color: #B00020;
     outline: none;
     cursor: pointer;
     border: 1px solid rgba(255,255,255,0.5);

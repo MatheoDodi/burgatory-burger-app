@@ -1,5 +1,5 @@
-import React from 'react';
-import burgerLogo from '../../assets/images/burger-logo.png';
+import React, { Component, Fragment } from 'react';
+import burgerLogo from '../../assets/images/burger-logo.svg';
 import styled from 'styled-components';
 
 const LogoImage = styled.img`
@@ -9,8 +9,14 @@ const LogoImage = styled.img`
     display: block;
 `
 
-const logo = (props) => (
-    <LogoImage src={burgerLogo} alt="Burgatory Logo"/>
-);
+class Logo extends Component {
+    render() {
+        return (
+            <Fragment>
+                <LogoImage src={burgerLogo} alt="Burgatory Logo"/>
+            </Fragment>
+        );
+    } 
+}
 
-export default logo;
+export default Logo;

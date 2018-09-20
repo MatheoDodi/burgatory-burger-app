@@ -15,7 +15,7 @@ class Orders extends Component {
     }
 
     render() {
-        let showOrders = <p style={{textAlign: 'center'}}>Sign in to see your orders!</p>
+        let showOrders = <p style={{fontSize: '1.5rem', textAlign: 'center'}}>Sign in to see your orders!</p>
         if (this.props.tokenId) {
             showOrders = <Spinner />
         }

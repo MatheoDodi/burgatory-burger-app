@@ -14,13 +14,13 @@ const SideDrawerDiv = styled.div`
     top: 0;
     z-index: 70;
     padding-top: 2rem;
-    background: linear-gradient(to top, #141e30, #243b55);
+    background: #000000;
     box-sizing: border-box;
     transition: transfrom 0.3s ease-out;
     box-shadow: 9px 0px 10px rgba(0,0,0,.70);
     transition: all 0.2s ease-out;
     transform: ${props => props.show ? 'translateX(0)' : 'translateX(-400px)'};
-    @media (min-width: 700px) {
+    @media (min-width: 1300px) {
         display: none;
     }
 `

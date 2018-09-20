@@ -5,11 +5,14 @@ import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 const Content = styled.main`
     box-sizing: border-box;
-    padding-top: 4rem;
+    padding-top: 63px;
     min-height: 100vh;
-    background: #EDF2F4;
+    background: #FAFAFA;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1310px) {
+        padding-top: 58px;
+    }
 `
 
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal';
+import NotSignedInModal from '../../components/UI/NotSignedInModal/NotSignedInModal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinnner/Spinner';
 import * as burgerBuilderActions from '../../store/actions/index';
@@ -12,7 +13,16 @@ class BurgerBuilder extends Component {
         ordering: false,
         loading: false,
         orderComplete: false,
-        error: false
+        error: false,
+        showPopUp: false
+    }
+
+    componentDidMount() {
+        if (this.props.isLoggedIn) {
+            this.setState( {showPopUp: false} )
+        } else {
+            this.setState( {showPopUp: true} )
+        }
     }
 
     orderContinueHnalder = () => {
@@ -27,6 +37,10 @@ class BurgerBuilder extends Component {
 
     orderCancelHandler = () => {
         this.setState( {ordering: false, orderComplete: false} );
+    }
+
+    closePopUpHandler = () => {
+        this.setState( {showPopUp: false, popUpSeen: true} )
     }
 
     render() {
@@ -53,9 +67,14 @@ class BurgerBuilder extends Component {
             orderSummary = <h3 style={{textAlign: 'center'}}>You're ordered has been placed!</h3>
         }
 
+
+
         return (
             <Fragment>
-                {this.props.isLoggedIn ? null : <p style={{textAlign: 'center'}}>Please, keep in mind, that you wont be able to complete an order<br/> without being Signed In.</p>}
+                <NotSignedInModal show={this.state.showPopUp} modalClosed={this.closePopUpHandler}>
+                    Please keep in mind that you won't be able <br />
+                    to complete any orders without being Signed In.
+                </NotSignedInModal>
                 <Modal 
                     show={this.state.ordering}
                     modalClosed={this.orderCancelHandler}>

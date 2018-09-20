@@ -9,9 +9,9 @@ const Header = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #293B52;
+    background-color: #000000;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 3fr 1fr 3fr;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
@@ -20,11 +20,12 @@ const Header = styled.header`
 `
 
 const MenuIconDiv = styled.div`
+    width: 58px;
     height: 58px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media (min-width: 700px) {
+    @media (min-width: 1300px) {
         height: 0;
     }
 `
