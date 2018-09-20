@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import heroImage from '../../assets/images/burger-hero.jpg';
+import downArrow from '../../assets/images/arrow.svg'
 
 const HeroImage = styled.div`
-    height: 70vh;
+    height: 100vh;
     background-image: url(${heroImage});
     background-position: center;
     background-repeat: no-repeat;
@@ -11,6 +12,8 @@ const HeroImage = styled.div`
 `
 
 const Overlay = styled.div`
+    box-sizing: border-box;
+    padding: 1rem;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.6);
@@ -30,7 +33,7 @@ const HeaderText = styled.h1`
     }
 `
 
-const SubText = styled.span`
+const SubText = styled.p`
     display: block;
     font-size: 2.5rem;
     color: white;
@@ -38,6 +41,12 @@ const SubText = styled.span`
     @media (max-width: 700px) {
         font-size: 1.8rem;
     }
+`
+
+const Arrow= styled.img`
+    margin-top: 5rem;
+    width: 60px;
+    justify-self: flex-end;
 `
 
 class Home extends Component {
@@ -49,6 +58,7 @@ class Home extends Component {
                     <Overlay>
                             <HeaderText>Burgatory</HeaderText>
                             <SubText>because burgers are no joke</SubText>
+                            <Arrow src={downArrow} />
                     </Overlay>
                 </HeroImage>
             </Fragment>
