@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import heroImage from '../../assets/images/burger-hero.jpg';
 import downArrow from '../../assets/images/arrow.svg'
 
@@ -24,7 +24,7 @@ const Overlay = styled.div`
 `
 
 const HeaderText = styled.h1`
-    font-size: 5rem;
+    font-size: 8rem;
     color: white;
     font-weight: 700;
     margin: 0 0 1rem 0;
@@ -46,8 +46,19 @@ const SubText = styled.p`
 const Arrow= styled.img`
     margin-top: 5rem;
     width: 60px;
-    justify-self: flex-end;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    @keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    }
 `
+
 
 class Home extends Component {
 
