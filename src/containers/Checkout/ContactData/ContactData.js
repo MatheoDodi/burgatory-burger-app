@@ -235,7 +235,7 @@ class ContactData extends Component {
                                 changed={(event) => this.formChangeHandler(event, formElement.id)}
                                 key={formElement.id} />
                         ))}
-                        <SuccessButton disabled={!this.state.formIsValid}>Place Order</SuccessButton>
+                        {this.props.tokenId ? <SuccessButton disabled={!this.state.formIsValid}>Place Order</SuccessButton> : <SuccessButton disabled={true}>Please Sign In</SuccessButton>}
                     </Form>
         }
             return (

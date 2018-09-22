@@ -58,7 +58,7 @@ class NavigationItems extends Component {
                 <ListItem onClick={this.props.clicked} textSize={this.props.textSize}><NavLink activeStyle={{color: 'red'}} exact to="/">Home</NavLink></ListItem>
                 <ListItem onClick={this.props.clicked} textSize={this.props.textSize}><NavLink activeStyle={{color: 'red'}} to="/burger-builder">Burger Builder</NavLink></ListItem>
                 <ListItem onClick={this.props.clicked} textSize={this.props.textSize}><NavLink activeStyle={{color: 'red'}} to="/orders">My Orders</NavLink></ListItem>
-        <ListItem onClick={this.props.clicked} textSize={this.props.textSize}>{this.props.token ? <NavLink activeStyle={{color: 'red'}} onClick={this.logOutHandler} to="/">Log Out</NavLink> : <NavLink to="/sign-in">Sign In</NavLink>}</ListItem>
+        <ListItem onClick={this.props.clicked} textSize={this.props.textSize}>{this.props.token ? <NavLink activeStyle={{color: 'red'}} onClick={this.logOutHandler} to="/">Log Out</NavLink> : <NavLink activeStyle={{color: 'red'}} to="/sign-in">Sign In</NavLink>}</ListItem>
             </NavigationList>
         )
     }
