@@ -12,7 +12,7 @@ class OrderComplete extends Component {
 
     render() {
         return (
-            <h2 style={{width: 'auto', margin: '0 auto'}}>
+            <h2 style={{width: 'auto',paddingTop: '6rem', margin: '0 auto'}}>
                 We thank you for your order!
             </h2>
         )
