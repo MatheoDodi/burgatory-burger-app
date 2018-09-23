@@ -25,6 +25,7 @@ class App extends Component {
             <Route path="/sign-in" component={Auth} />
             <Route path="/sign-in-successful" component={SuccessfulSignIn} />
             <Route path='/burger-builder' component={BurgerBuilder}/>
+            <Route path='/logged-out' component={Home} />
             <Route exact path='/' component={Home}/>
 						<Route render={() => <div style={{width: '100%', textAlign: 'center'}}><h1>Oops, You must've taken a wrong turn somewhere! <br /> We know you're hungry, so why not navigate to our <NavLink to="/">Home</NavLink> Page?</h1></div>} />
 					</Switch>

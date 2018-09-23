@@ -7,11 +7,11 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (authData) => {
+export const authSuccess = (idToken, localId) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        idToken: authData.idToken,
-        userId: authData.localId
+        idToken: idToken,
+        userId: localId
     }
 }
 
@@ -23,6 +23,9 @@ export const authFail = (error) => {
 }
 
 export const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationTime');
+    localStorage.removeItem('userId');
     return {
         type:   actionTypes.AUTH_LOGOUT,
     }
@@ -50,7 +53,11 @@ export const auth = (email, password, isSignUp) => {
         axios.post(url, authData)
             .then(response => {
                 console.log(response);
-                dispatch(authSuccess(response.data))
+                const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+                localStorage.setItem('token', response.data.idToken);
+                localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('userId', response.data.localId);
+                dispatch(authSuccess(response.data.idToken, response.data.localId))
                 dispatch(checkAuthTimeout(response.data.expiresIn))
             })
             .catch(error => {
@@ -63,5 +70,22 @@ export const auth = (email, password, isSignUp) => {
 export const authLogout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT
+    }
+}
+
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logOut());
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            const userId = localStorage.getItem('userId');
+            if (expirationDate < new Date()) {
+                dispatch(logOut());
+            } else {
+                dispatch(authSuccess(token, userId))
+            }
+        }
     }
 }
