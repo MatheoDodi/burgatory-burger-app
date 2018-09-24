@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const SummaryDiv = styled.div`
 	text-align: center;
 	width: 80%;
-	margin: auto;
+    margin: auto;
+    padding-top: 4rem;
 `
 
 const checkoutSummary = (props) => {

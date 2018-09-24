@@ -17,7 +17,7 @@ const SideDrawerDiv = styled.div`
     background: #000000;
     box-sizing: border-box;
     transition: transfrom 0.3s ease-out;
-    box-shadow: 9px 0px 10px rgba(0,0,0,.70);
+    box-shadow: 10px 0px 10px rgba(0,0,0,.55);
     transition: all 0.2s ease-out;
     transform: ${props => props.show ? 'translateX(0)' : 'translateX(-400px)'};
     @media (min-width: 1300px) {
