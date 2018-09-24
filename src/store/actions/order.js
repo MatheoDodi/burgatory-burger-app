@@ -50,22 +50,37 @@ export const fetchOrdersSuccess = (orders) => {
     }
 }
 
-export const fetchOrders = (tokenId) => {
+export const fetchOrdersFail = () => {
+    return {
+        type: actionTypes.FETCH_ORDERS_FAIL
+    }
+}
+
+export const fetchOrders = (tokenId, userId) => {
     return dispatch => {
         axios.get('/orders.json?auth=' + tokenId)
             .then(response => {
                 const fetchedOrders = [];
+                
                 for (let key in response.data) {
-                    fetchedOrders.push({
-                        ...response.data[key],
-                    id: key
-                    });
+                    if (response.data[key].userId === userId) {
+                        fetchedOrders.push({
+                            ...response.data[key],
+                        id: key
+                        });
+                    }
                 }
                 dispatch(fetchOrdersSuccess(fetchedOrders));
             })
             .catch(error => {
-               console.log(error);
+               dispatch(fetchOrdersFail());
             })
+    }
+}
+
+export const clearOrdersError = () => {
+    return {
+        type: actionTypes.CLEAR_ERROR
     }
 }
 

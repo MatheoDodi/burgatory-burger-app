@@ -9,10 +9,12 @@ export {
     purchaseBurgerStart,
     purchaseInt,
     fetchOrders,
-    clearOrders
+    clearOrders,
+    clearOrdersError
 } from './order';
 
 export {
     auth,
-    authLogout
+    authLogout,
+    authCheckState
 } from './auth';

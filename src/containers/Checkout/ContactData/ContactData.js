@@ -179,9 +179,10 @@ class ContactData extends Component {
         }
 
         const order = {
+            userId: this.props.userId,
             orderData: formData,
             ingredients: this.props.ingr,
-            price : this.props.totalPrc
+            price : this.props.totalPrc,
         }
 
         if (this.state.orderForm.deliveryMethod.value === 'fastest') {
@@ -252,7 +253,8 @@ const mapStateToProps = state => {
 		ingr: state.burgerBuilder.ingredients,
         totalPrc: state.burgerBuilder.totalPrice,
         loading: state.order.loading,
-        tokenId: state.auth.token
+        tokenId: state.auth.token,
+        userId: state.auth.userId
 	}
 }
 

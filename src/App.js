@@ -8,10 +8,16 @@ import OrderComplete from './components/Order/OrderComplete/OrderComplete';
 import SuccessfulSignIn from './components/UI/SuccessfulSignIn/SuccessfulSignIn';
 import Home from './containers/Home/Home';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
 
 
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.onTryAutoSignIn();
+  }
 
   render() {
 
@@ -35,4 +41,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignIn: () => dispatch(actions.authCheckState())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
