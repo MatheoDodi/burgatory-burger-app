@@ -169,7 +169,7 @@ class Home extends Component {
                     <Heading>How did you do <em>that</em> ?</Heading>
                     <Paragraph>Bellow, I will be explaining all the features that are available in this web app, as well as upcoming futures that I will be implementing.</Paragraph>
                     <Heading>Building the Burger</Heading>
-                    <Paragraph style={{marginBottom: '1rem'}}>The buns, as well as all the ingredients are &#60;div&#62; elements, styled with pure CSS.</Paragraph>
+                    <Paragraph style={{marginBottom: '1rem'}}>The buns, as well as all the ingredients are &#60;div&#62; elements, styled with pure CSS. I chose to go with that approach in order to improve performance.</Paragraph>
                     <Cheese>Cheese</Cheese>
                     <Meat>Meat</Meat>
                     <Salad>Salad</Salad>
@@ -179,7 +179,8 @@ class Home extends Component {
                         <p style={{textAlign: 'center', margin: '0'}}>Buns</p>
                         <BreadBottom />
                     </div>
-                    <Heading>Building the Burger</Heading>
+                    <Heading>To be Continued...</Heading>
+                    <Paragraph>Home page still under construction. All other sections of the web app are finished.</Paragraph>
                 </Grid>
             </Fragment>
 
