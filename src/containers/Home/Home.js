@@ -179,7 +179,8 @@ class Home extends Component {
                         <p style={{textAlign: 'center', margin: '0'}}>Buns</p>
                         <BreadBottom />
                     </div>
-                    <Heading></Heading>
+                    <Heading>Forming the...Forms</Heading>
+                    <Paragraph>All of the form validation was entirelly custom and hand-written by me, no libraries were used.</Paragraph>
                     <Heading>To be Continued...</Heading>
                     <Paragraph>Home page still under construction. All other sections of the web app are finished.</Paragraph>
                 </Grid>
