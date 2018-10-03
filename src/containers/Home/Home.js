@@ -179,6 +179,7 @@ class Home extends Component {
                         <p style={{textAlign: 'center', margin: '0'}}>Buns</p>
                         <BreadBottom />
                     </div>
+                    <Heading></Heading>
                     <Heading>To be Continued...</Heading>
                     <Paragraph>Home page still under construction. All other sections of the web app are finished.</Paragraph>
                 </Grid>
